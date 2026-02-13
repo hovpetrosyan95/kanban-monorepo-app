@@ -1,0 +1,10 @@
+{
+  "name": "@kanban/ui",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "main": "./nuxt.config.ts",
+  "devDependencies": {
+    "nuxt": "^3.21.1"
+  }
+}
