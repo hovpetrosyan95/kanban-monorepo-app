@@ -8,6 +8,25 @@ importers:
 
   .: {}
 
+  packages/mobile:
+    dependencies:
+      nuxt:
+        specifier: ^3.21.1
+        version: 3.21.1(@parcel/watcher@2.5.6)(@vue/compiler-sfc@3.5.28)(cac@6.7.14)(db0@0.3.4)(ioredis@5.9.3)(lightningcss@1.30.2)(magicast@0.5.2)(rollup@4.57.1)(terser@5.46.0)(vite@7.3.1(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.8.2))(yaml@2.8.2)
+      vue:
+        specifier: ^3.5.28
+        version: 3.5.28
+      vue-router:
+        specifier: ^4.6.4
+        version: 4.6.4(vue@3.5.28)
+    devDependencies:
+      '@tailwindcss/vite':
+        specifier: ^4.1.18
+        version: 4.1.18(vite@7.3.1(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.8.2))
+      tailwindcss:
+        specifier: ^4.1.18
+        version: 4.1.18
+
   packages/ui:
     devDependencies:
       nuxt:
