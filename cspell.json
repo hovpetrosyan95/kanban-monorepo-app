@@ -1,0 +1,15 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "nuxt",
+    "nuxi",
+    "unocss",
+    "pnpm",
+    "capacitor",
+    "iconify",
+    "pinia",
+    "tailwindcss"
+  ],
+  "ignorePaths": ["node_modules/**", ".nuxt/**", "dist/**"]
+}
