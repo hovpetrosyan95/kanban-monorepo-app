@@ -2,5 +2,22 @@
 @source "../../**/*.{vue,ts,js}";
 
 @theme {
-  --color-brand: #3b82f6;
+  /* Core Brand */
+  --color-brand: #2563eb;
+  --color-brand-light: #eff6ff;
+
+  /* Status Colors */
+  --color-todo: #64748b; /* Slate: Neutral starting point */
+  --color-progress: #f59e0b; /* Amber: High visibility for active work */
+  --color-done: #10b981; /* Emerald: Satisfying success green */
+  --color-urgent: #ef4444; /* Red: For overdue tasks */
+
+  /* Neutral Surface Colors */
+  --color-app-bg: #f8fafc;
+  --color-card-bg: #ffffff;
+  --color-border: #e2e8f0;
+
+  /* Text Hierarchy */
+  --color-text-main: #1e293b;
+  --color-text-muted: #64748b;
 }
