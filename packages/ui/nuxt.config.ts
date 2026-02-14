@@ -1,4 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
+import { fileURLToPath } from "node:url";
 
 export default defineNuxtConfig({
   name: "kanban-ui-layer",
@@ -8,6 +9,19 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+
+  modules: ["@unocss/nuxt"],
+  unocss: {
+    icons: true, // Enables the i- prefix for icons
+  },
+
+  // This line tells Nuxt: "Scan the components folder in this layer"
+  components: [
+    {
+      path: fileURLToPath(new URL("./components", import.meta.url)),
+      pathPrefix: false, // Allows <Navbar /> instead of <UiNavbar />
+    },
+  ],
   css: [
     // This injects the CSS file automatically
     new URL("./assets/css/tailwind.css", import.meta.url).pathname,
