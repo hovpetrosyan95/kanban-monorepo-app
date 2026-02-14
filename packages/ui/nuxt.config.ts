@@ -10,7 +10,10 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  modules: ["@unocss/nuxt", "@pinia/nuxt"],
+  modules: ["@unocss/nuxt", "@pinia/nuxt", "pinia-plugin-persistedstate"],
+  piniaPersistedstate: {
+    storage: "localStorage",
+  },
   imports: { dirs: ["stores"] },
   unocss: {
     icons: true, // Enables the i- prefix for icons
