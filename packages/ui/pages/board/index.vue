@@ -4,10 +4,11 @@
     <div class="hidden lg:flex items-center justify-between p-8">
       <h1 class="text-2xl font-bold text-text-main">Board</h1>
 
-      <Button variant="primary">
+      <Button @click="open()" variant="primary">
         <span class="i-heroicons-plus-20-solid w-5 h-5" />
         Add New Task
       </Button>
+      <TaskModal />
     </div>
 
     <!-- Mobile Header: Just the title -->
@@ -21,6 +22,7 @@
       <Button
         variant="primary"
         class="w-14 h-14 !rounded-full shadow-lg shadow-brand/40"
+        @click="open()"
       >
         <span class="i-heroicons-plus-20-solid w-7 h-7" />
       </Button>
@@ -37,4 +39,6 @@
 definePageMeta({
   title: "Project Board",
 });
+
+const { open } = useTaskModal();
 </script>
