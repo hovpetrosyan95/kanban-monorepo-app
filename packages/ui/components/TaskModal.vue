@@ -1,9 +1,10 @@
 <script setup lang="ts">
 const { isOpen, form, close } = useTaskModal();
+const kanbanStore = useKanbanStore();
 
 const handleSave = () => {
   if (!form.title) return;
-
+  kanbanStore.createTask({ ...form });
   close();
 };
 </script>

@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  modules: ["@unocss/nuxt"],
+  modules: ["@unocss/nuxt", "@pinia/nuxt"],
+  imports: { dirs: ["stores"] },
   unocss: {
     icons: true, // Enables the i- prefix for icons
   },
