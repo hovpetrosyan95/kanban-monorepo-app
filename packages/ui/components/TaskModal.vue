@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TASK_PRIORITIES } from "../constants/task";
+import { STATUS_MAP, TASK_PRIORITIES, TASK_STATUSES } from "../constants/task";
 import { TASK_MODAL_CONTENT } from "../constants/ui";
 
 const { isOpen, form, close, editingId } = useTaskModal();
@@ -65,6 +65,37 @@ const handleSave = () => {
             >
               {{ content.inputs.priority.label }}
             </Text>
+
+            <div class="space-y-3">
+              <Text
+                variant="label"
+                class="px-1 text-[10px] uppercase tracking-widest opacity-50"
+              >
+                Task Status
+              </Text>
+
+              <div class="flex gap-2">
+                <Button
+                  v-for="statusId in TASK_STATUSES"
+                  :key="statusId"
+                  type="button"
+                  :variant="form.status === statusId ? 'primary' : 'secondary'"
+                  class="flex-1 !py-4 !rounded-2xl transition-all flex items-center justify-center gap-2"
+                  @click="form.status = statusId"
+                >
+                  <div
+                    :class="[
+                      STATUS_MAP[statusId].color,
+                      'h-1.5 w-1.5 rounded-full',
+                    ]"
+                  />
+
+                  <span class="text-[11px] font-bold uppercase tracking-tight">
+                    {{ STATUS_MAP[statusId].label }}
+                  </span>
+                </Button>
+              </div>
+            </div>
 
             <div class="flex gap-2">
               <Button
