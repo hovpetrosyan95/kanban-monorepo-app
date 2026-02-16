@@ -16,6 +16,7 @@
         <slot />
       </div>
     </main>
+    <TaskModal />
   </div>
 </template>
 
