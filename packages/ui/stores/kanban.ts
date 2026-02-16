@@ -17,7 +17,18 @@ export const useKanbanStore = defineStore(
       tasks.value.push(newTask);
     };
 
-    return { tasks, createTask };
+    const updateTask = (id: string, updates: Partial<Task>) => {
+      const index = tasks.value.findIndex((t: Task) => t.id === id);
+      if (index !== -1) {
+        tasks.value[index] = { ...tasks.value[index], ...updates };
+      }
+    };
+
+    const deleteTask = (id: string) => {
+      tasks.value = tasks.value.filter((t: Task) => t.id !== id);
+    };
+
+    return { tasks, createTask, updateTask, deleteTask };
   },
   {
     persist: { storage: import.meta.client ? localStorage : undefined },
