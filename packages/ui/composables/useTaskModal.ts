@@ -1,21 +1,13 @@
-import { TASK_STATUSES, TASK_PRIORITIES } from "../constants/task";
-import type { CreateTaskInput, Task } from "../types/kanban";
-
-const createInitialState = (): CreateTaskInput => ({
-  title: "",
-  description: "",
-  status: TASK_STATUSES[0],
-  priority: TASK_PRIORITIES[1],
-});
+import type { Task } from "../types/kanban";
 
 const isOpen = ref(false);
 const editingId = ref<string | null>(null);
-const form = reactive(createInitialState());
 
 export const useTaskModal = () => {
+  const { form, reset } = useTaskForm();
+
   const open = (task?: Task) => {
     if (task) {
-      // EDIT - Fill with existing data
       editingId.value = task.id;
       Object.assign(form, {
         title: task.title,
@@ -25,14 +17,18 @@ export const useTaskModal = () => {
       });
     } else {
       editingId.value = null;
-      Object.assign(form, createInitialState());
+      reset();
     }
     isOpen.value = true;
   };
 
   const close = () => {
     isOpen.value = false;
-    setTimeout(() => Object.assign(form, createInitialState()), 300);
+    // Delay reset until animation finishes
+    setTimeout(() => {
+      editingId.value = null;
+      reset();
+    }, 300);
   };
 
   return {

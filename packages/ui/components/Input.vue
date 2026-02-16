@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col gap-1.5 w-full">
-    <!-- Use :is to switch between input and textarea -->
     <component
       :is="as"
       :value="modelValue"
