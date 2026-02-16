@@ -37,7 +37,7 @@ import type { Task } from "../types/kanban";
 withDefaults(
   defineProps<{
     task: Task;
-    truncated: boolean;
+    truncated?: boolean;
   }>(),
   {
     truncated: true,
