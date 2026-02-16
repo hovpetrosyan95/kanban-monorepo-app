@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import type { Task, CreateTaskInput } from "../types/kanban";
+import type { Task, CreateTaskInput, TaskStatus } from "../types/kanban";
 import "pinia-plugin-persistedstate";
 
 export const useKanbanStore = defineStore(
@@ -27,6 +27,13 @@ export const useKanbanStore = defineStore(
     const deleteTask = (id: string) => {
       tasks.value = tasks.value.filter((t: Task) => t.id !== id);
     };
+
+    // const updateStatus = (id: string, newStatus: TaskStatus) => {
+    //   const task = tasks.value.find((t: Task) => t.id === id);
+    //   if (task) {
+    //     task.status = newStatus;
+    //   }
+    // };
 
     return { tasks, createTask, updateTask, deleteTask };
   },

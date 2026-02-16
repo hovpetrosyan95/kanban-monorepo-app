@@ -1,4 +1,9 @@
-import type { TaskAction, TaskActionId, TaskPriority } from "../types/kanban";
+import type {
+  TaskAction,
+  TaskActionId,
+  TaskPriority,
+  TaskStatus,
+} from "../types/kanban";
 
 export const TASK_ACTIONS: Record<TaskActionId, TaskAction> = {
   edit: {
@@ -30,4 +35,11 @@ export const PRIORITY_OPTIONS: PriorityOption[] = [
 ];
 export const TASK_PRIORITIES = PRIORITY_OPTIONS.map((p) => p.id);
 export const TASK_ACTION_LIST = Object.values(TASK_ACTIONS);
-export const TASK_STATUSES = ["todo", "in-progress", "done"] as const;
+
+export const STATUS_MAP: Record<TaskStatus, { label: string; color: string }> =
+  {
+    todo: { label: "To Do", color: "bg-slate-500" },
+    "in-progress": { label: "In Progress", color: "bg-brand" },
+    done: { label: "Done", color: "bg-green-500" },
+  };
+export const TASK_STATUSES = Object.keys(STATUS_MAP) as TaskStatus[];
