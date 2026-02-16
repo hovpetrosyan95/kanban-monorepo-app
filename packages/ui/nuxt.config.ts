@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   piniaPersistedstate: {
     storage: "localStorage",
   },
-  imports: { dirs: ["stores", "constants"] },
+  imports: { dirs: ["stores", "constants", "composables", "stores"] },
   unocss: {
     icons: true, // Enables the i- prefix for icons
   },
