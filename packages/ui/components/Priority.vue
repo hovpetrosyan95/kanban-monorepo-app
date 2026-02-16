@@ -5,22 +5,28 @@
       :class="colorMap[value]"
     />
 
-    <Text variant="label">
-      {{ value }}
+    <Text variant="label" class="!text-inherit">
+      {{ currentLabel }}
     </Text>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Task } from "../types/kanban";
+import { TaskPriority } from "../types/kanban";
 
-defineProps<{
-  value: Task["priority"];
+const props = defineProps<{
+  value: TaskPriority;
 }>();
 
-const colorMap: Record<Task["priority"], string> = {
+const colorMap: Record<TaskPriority, string> = {
   low: "bg-todo ring-todo/10",
   medium: "bg-progress ring-progress/10",
   high: "bg-urgent ring-urgent/10",
 };
+
+const currentLabel = computed(() => {
+  return (
+    PRIORITY_OPTIONS.find((opt) => opt.id === props.value)?.label || props.value
+  );
+});
 </script>
