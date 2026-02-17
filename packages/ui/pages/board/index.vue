@@ -1,5 +1,6 @@
 <!-- apps/web/pages/board.vue -->
 <script setup lang="ts">
+import AddCardSection from "../../components/AddCardSection.vue";
 import { TASK_STATUSES } from "../../constants/task";
 definePageMeta({ title: "Board" });
 const { open } = useTaskModal();
@@ -9,26 +10,7 @@ const { columns } = useDragBoard();
 
 <template>
   <div class="relative min-h-screen h-full px-6 pt-6 pb-32 lg:pb-12">
-    <header class="hidden lg:flex items-center justify-between mb-10">
-      <div class="space-y-1">
-        <h1
-          class="text-3xl font-black text-text-main tracking-tight uppercase italic"
-        >
-          Workflow
-        </h1>
-        <p class="text-sm text-text-muted font-medium opacity-50">
-          Drag cards to reorganize
-        </p>
-      </div>
-      <Button
-        variant="primary"
-        class="px-8 shadow-xl shadow-brand/20"
-        @click="open()"
-      >
-        Add Task
-      </Button>
-    </header>
-
+    <AddCardSection />
     <ClientOnly>
       <div
         class="flex flex-col lg:flex-row gap-8 lg:items-start lg:gap-6 lg:overflow-x-auto min-h-[60vh]"

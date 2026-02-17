@@ -37,7 +37,7 @@ const handleSave = () => {
         <!-- Mobile Drag Handle -->
         <div class="mx-auto mb-6 h-1.5 w-12 rounded-full bg-border lg:hidden" />
         <Form @submit="handleSave">
-          <header class="flex items-center justify-between">
+          <div class="flex items-center justify-between">
             <TextTitle size="md">
               {{ editingId ? content.header.edit : content.header.create }}
             </TextTitle>
@@ -45,7 +45,7 @@ const handleSave = () => {
             <Button variant="ghost" class="!h-10 !w-10 !p-0" @click="close">
               <span class="i-heroicons-x-mark-20-solid h-6 w-6" />
             </Button>
-          </header>
+          </div>
           <Input
             v-model="form.title"
             :placeholder="content.inputs.title.placeholder"

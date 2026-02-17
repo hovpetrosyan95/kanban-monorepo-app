@@ -18,6 +18,9 @@ const handleBack = (): void => {
 };
 
 onMounted(() => validateOrRedirect());
+definePageMeta({
+  title: "Task Details",
+});
 </script>
 
 <template>
@@ -33,7 +36,7 @@ onMounted(() => validateOrRedirect());
       >
         <span class="i-heroicons-arrow-left-20-solid h-5 w-5" />
       </Button>
-      <TextTitle size="md" class="opacity-40">Task Detail</TextTitle>
+      <TextTitle size="md" class="opacity-40">Back to Board</TextTitle>
     </nav>
 
     <TaskCard

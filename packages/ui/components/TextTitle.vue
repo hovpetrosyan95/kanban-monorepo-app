@@ -9,10 +9,18 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  as: { type: String, default: "h2" },
-  size: { type: String as () => "sm" | "md" | "lg" | "xl", default: "md" },
-});
+type TitleSize = "sm" | "md" | "lg" | "xl";
+
+const props = withDefaults(
+  defineProps<{
+    as?: string;
+    size?: TitleSize;
+  }>(),
+  {
+    as: "h2",
+    size: "md",
+  },
+);
 
 const sizes = {
   sm: "text-sm lg:text-base", // Card Titles

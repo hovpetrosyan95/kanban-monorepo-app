@@ -1,10 +1,10 @@
 <template>
-  <div class="h-screen bg-brand flex items-center justify-center">
-    <h1 class="text-white text-3xl font-bold">Home Page</h1>
-  </div>
+  <TextTitle size="lg">Home Page</TextTitle>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import TextTitle from "../components/TextTitle.vue";
+
 definePageMeta({
   title: "Home Page",
 });
