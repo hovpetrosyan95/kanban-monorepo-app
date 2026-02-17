@@ -28,14 +28,25 @@ export const useKanbanStore = defineStore(
       tasks.value = tasks.value.filter((t: Task) => t.id !== id);
     };
 
-    // const updateStatus = (id: string, newStatus: TaskStatus) => {
-    //   const task = tasks.value.find((t: Task) => t.id === id);
-    //   if (task) {
-    //     task.status = newStatus;
-    //   }
-    // };
+    const updateStatus = (id: string, newStatus: TaskStatus) => {
+      const task = tasks.value.find((t: Task) => t.id === id);
+      if (task) {
+        task.status = newStatus;
+      }
+    };
 
-    return { tasks, createTask, updateTask, deleteTask };
+    const getTasksByStatus = (status: TaskStatus) => {
+      return tasks.value.filter((t: Task) => t.status === status);
+    };
+
+    return {
+      tasks,
+      createTask,
+      updateTask,
+      deleteTask,
+      updateStatus,
+      getTasksByStatus,
+    };
   },
   {
     persist: { storage: import.meta.client ? localStorage : undefined },
