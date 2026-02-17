@@ -6,5 +6,9 @@
   "main": "./nuxt.config.ts",
   "devDependencies": {
     "nuxt": "^3.21.1"
+  },
+  "dependencies": {
+    "sortablejs": "^1.15.7",
+    "vuedraggable": "^4.1.0"
   }
 }
