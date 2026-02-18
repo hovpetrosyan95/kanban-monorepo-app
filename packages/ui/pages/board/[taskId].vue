@@ -33,6 +33,7 @@ definePageMeta({
         variant="ghost"
         class="!h-10 !w-10 !p-0 rounded-xl hover:bg-black/5"
         @click="handleBack"
+        haptic="light"
       >
         <span class="i-heroicons-arrow-left-20-solid h-5 w-5" />
       </Button>
@@ -46,7 +47,6 @@ definePageMeta({
     >
       <template #actions>
         <div class="flex items-center gap-3">
-          <!-- 1. COMPACT STATUS PICKER USING BUTTON ATOM -->
           <div
             class="flex p-1 bg-border/20 rounded-xl border border-border/5 shadow-inner"
           >

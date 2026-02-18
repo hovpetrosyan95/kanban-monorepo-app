@@ -48,6 +48,7 @@ const { columns } = useDragBoard();
         variant="primary"
         class="h-16 w-16 !rounded-full shadow-2xl"
         @click="open()"
+        haptic="light"
       >
         <span class="i-heroicons-plus-20-solid w-8 h-8 text-white" />
       </Button>
