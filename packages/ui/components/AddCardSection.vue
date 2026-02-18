@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const { open } = useTaskModal();
+</script>
+
 <template>
   <div class="hidden lg:flex items-center justify-between mb-10">
     <div class="space-y-1">
