@@ -13,7 +13,6 @@ import { useHaptics } from "../composables/useHaptics";
 
 const props = defineProps<{
   to: string;
-  required: true;
 }>();
 
 const { trigger } = useHaptics();
