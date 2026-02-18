@@ -29,7 +29,7 @@ interface PriorityOption {
 }
 
 export const PRIORITY_OPTIONS: PriorityOption[] = [
-  { id: "low", label: "Low X" },
+  { id: "low", label: "Low" },
   { id: "medium", label: "Medium" },
   { id: "high", label: "High" },
 ];
