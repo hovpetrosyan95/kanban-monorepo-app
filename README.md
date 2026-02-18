@@ -60,3 +60,9 @@ cd packages/mobile && pnpm exec cap sync android
 # 3. Open in Android Studio
 pnpm exec cap open android
 ```
+
+some points about task
+
+it was interesting to work with, i went trough 3 packages architecture inside monorepo, I put them under packages and configured so that both mobile and web use ui through extending the module, using everything from there even pages, and in web and mobile did appropriate configurations for working ssr on web and it off on mobile
+
+If you have any questions feel free to contact
