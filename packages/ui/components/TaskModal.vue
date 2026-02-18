@@ -118,7 +118,6 @@ const handleSave = () => {
               variant="secondary"
               class="flex-1"
               @click="close"
-              haptic="light"
             >
               {{ content.actions.cancel }}
             </Button>
