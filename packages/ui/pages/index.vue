@@ -15,8 +15,8 @@ definePageMeta({
       </TextTitle>
 
       <Text variant="muted" class="text-lg max-w-lg mx-auto">
-        The most intuitive Kanban board for your personal and professional
-        projects. Built for speed, synced everywhere.
+        Kanban board for managing your tasks, create, duplicate, edit, delete
+        functionality, board column dragging
       </Text>
     </hgroup>
 
