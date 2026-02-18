@@ -5,7 +5,6 @@
     :class="variants[variant]"
     @click="handleClick"
   >
-    <!-- Slot for text or icons -->
     <slot />
   </button>
 </template>
@@ -20,10 +19,12 @@ const props = withDefaults(
   defineProps<{
     variant?: ButtonVariant;
     haptic?: HapticStrength;
+    withHaptic?: boolean;
   }>(),
   {
     variant: "primary",
     haptic: "light",
+    withHaptic: false,
   },
 );
 
@@ -34,7 +35,9 @@ const emit = defineEmits<{
 const { trigger } = useHaptics();
 
 const handleClick = (event: MouseEvent) => {
-  trigger(props.haptic);
+  if (props.withHaptic) {
+    trigger(props.haptic);
+  }
 
   emit("click", event);
 };
