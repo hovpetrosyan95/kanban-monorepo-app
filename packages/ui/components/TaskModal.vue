@@ -82,6 +82,7 @@ const handleSave = () => {
                   :variant="form.status === statusId ? 'primary' : 'secondary'"
                   class="flex-1 !py-4 !rounded-2xl transition-all flex items-center justify-center gap-2"
                   @click="form.status = statusId"
+                  haptic="light"
                 >
                   <div
                     :class="[
@@ -105,6 +106,7 @@ const handleSave = () => {
                 :variant="form.priority === option ? 'primary' : 'secondary'"
                 class="flex-1 !py-4 !rounded-2xl transition-all"
                 @click="form.priority = option"
+                haptic="light"
               >
                 <Priority :value="option" />
               </Button>
@@ -116,6 +118,7 @@ const handleSave = () => {
               variant="secondary"
               class="flex-1"
               @click="close"
+              haptic="light"
             >
               {{ content.actions.cancel }}
             </Button>

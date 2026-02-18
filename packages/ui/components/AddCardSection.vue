@@ -14,6 +14,7 @@ const { open } = useTaskModal();
       variant="primary"
       class="px-8 shadow-xl shadow-brand/20"
       @click="open()"
+      haptic="medium"
     >
       Add Task
     </Button>

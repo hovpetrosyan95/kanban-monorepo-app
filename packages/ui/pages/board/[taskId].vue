@@ -62,7 +62,6 @@ definePageMeta({
                   : '!text-text-muted/40 hover:!text-text-muted'
               "
             >
-              <!-- Indicator Dot from STATUS_MAP -->
               <div
                 :class="[
                   STATUS_MAP[statusId].color,
@@ -73,12 +72,12 @@ definePageMeta({
             </Button>
           </div>
 
-          <!-- 2. EDIT BUTTON ATOM -->
           <Button
             variant="secondary"
             size="sm"
             class="!h-10 !w-10 !p-0 rounded-xl shadow-sm transition-transform active:scale-90"
             @click.stop="handleEdit"
+            haptic="medium"
           >
             <span class="i-heroicons-pencil-square h-5 w-5" />
           </Button>

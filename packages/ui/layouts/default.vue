@@ -4,7 +4,7 @@
       class="fixed top-0 z-40 w-full border-b border-border bg-card-bg/80 backdrop-blur-md lg:left-20 lg:w-[calc(100%-5rem)]"
     >
       <div class="flex h-16 items-center px-6">
-        <h1 class="text-xl font-bold tracking-tight">
+        <h1 class="hidden lg:block text-xl font-bold tracking-tight">
           {{ route.meta.title || "Kanban" }}
         </h1>
       </div>
