@@ -23,11 +23,8 @@ const { columns } = useDragBoard();
           <BoardDraggableList :status="status" :list="columns[status]">
             <template #item="{ task }">
               <NuxtLink :to="`/board/${task.id}`" custom v-slot="{ navigate }">
-                <div
-                  @click="navigate"
-                  class="cursor-pointer transition-all active:scale-[0.97]"
-                >
-                  <TaskCard :task="task">
+                <div @click="navigate">
+                  <TaskCard :task="task" isClickable>
                     <template #actions>
                       <div @click.stop><TaskActions :task="task" /></div>
                     </template>

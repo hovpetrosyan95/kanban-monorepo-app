@@ -5,16 +5,23 @@ withDefaults(
   defineProps<{
     task: Task;
     truncated?: boolean;
+    isClickable?: boolean;
   }>(),
   {
     truncated: true,
+    isClickable: false,
   },
 );
 </script>
 
 <template>
   <div
-    class="drag-handle group relative flex flex-col gap-3 rounded-[28px] border border-border/40 bg-white p-5 shadow-sm transition-all hover:shadow-md active:scale-[0.98] cursor-grab active:cursor-grabbing touch-manipulation select-none"
+    class="drag-handle group relative flex flex-col gap-3 rounded-[28px] border border-border/40 bg-white p-5 shadow-sm transition-all select-none touch-manipulation"
+    :class="[
+      isClickable
+        ? 'hover:shadow-md active:scale-[0.98] cursor-grab active:cursor-grabbing'
+        : 'cursor-default',
+    ]"
   >
     <div class="flex items-start justify-between">
       <div class="flex items-center gap-3">
