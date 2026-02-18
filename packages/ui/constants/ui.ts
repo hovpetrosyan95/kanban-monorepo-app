@@ -22,3 +22,10 @@ export const TASK_MODAL_CONTENT = {
     save: "Update Changes",
   },
 } as const;
+
+export const HAPTIC_STRENGTHS = {
+  NONE: "none",
+  LIGHT: "light",
+  MEDIUM: "medium",
+  HEAVY: "heavy",
+} as const;
