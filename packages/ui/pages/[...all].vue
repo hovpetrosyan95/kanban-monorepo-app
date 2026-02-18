@@ -1,5 +1,3 @@
 <template>
-  <div class="h-screen bg-brand flex items-center justify-center">
-    <h1 class="text-white text-3xl font-bold">Not Found Page</h1>
-  </div>
+  <TextTitle size="lg">Not Found Page</TextTitle>
 </template>
