@@ -4,6 +4,13 @@ import { TASK_ACTIONS } from "../constants/task";
 export const useTaskActions = (task: Task) => {
   const kanbanStore = useKanbanStore();
   const { open } = useTaskModal();
+  const { openDeleteConfirm } = useDeleteConfirm();
+
+  const handleDelete = () => {
+    if (task.id) {
+      openDeleteConfirm(task);
+    }
+  };
 
   const execute = (actionId: string) => {
     switch (actionId) {
@@ -20,7 +27,7 @@ export const useTaskActions = (task: Task) => {
         break;
 
       case TASK_ACTIONS.delete.id:
-        kanbanStore.deleteTask(task.id);
+        handleDelete();
         break;
 
       default:

@@ -7,7 +7,23 @@ export const useKanbanStore = defineStore(
   "kanban",
   () => {
     const tasks = ref<Task[]>([]);
+    const deleteConfirmation = reactive({
+      isOpen: false,
+      task: null as Task | null,
+    });
     const { trigger, success, warning } = useHaptics();
+
+    const openDeleteConfirm = (task: Task) => {
+      deleteConfirmation.task = task;
+      deleteConfirmation.isOpen = true;
+    };
+
+    const closeDeleteConfirm = () => {
+      deleteConfirmation.isOpen = false;
+      setTimeout(() => {
+        deleteConfirmation.task = null;
+      }, 300);
+    };
 
     const createTask = async (input: CreateTaskInput) => {
       const newTask: Task = {
@@ -55,6 +71,9 @@ export const useKanbanStore = defineStore(
       deleteTask,
       updateStatus,
       getTasksByStatus,
+      deleteConfirmation,
+      openDeleteConfirm,
+      closeDeleteConfirm,
     };
   },
   {

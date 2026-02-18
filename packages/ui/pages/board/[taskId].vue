@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { useDeleteConfirm } from "../../composables/useDeleteConfirm";
 import { useTaskDetail } from "../../composables/useTaskDetail";
-import { STATUS_MAP, TASK_STATUSES } from "../../constants/task";
 
 const route = useRoute();
 const router = useRouter();
@@ -8,6 +8,14 @@ const router = useRouter();
 const { open } = useTaskModal();
 
 const { task, validateOrRedirect } = useTaskDetail(route.params.taskId);
+
+const { openDeleteConfirm } = useDeleteConfirm();
+
+const handleDelete = () => {
+  if (task.value) {
+    openDeleteConfirm(task.value);
+  }
+};
 
 const handleEdit = (): void => {
   if (task.value) open(task.value);
@@ -47,31 +55,6 @@ definePageMeta({
     >
       <template #actions>
         <div class="flex items-center gap-3">
-          <div
-            class="flex p-1 bg-border/20 rounded-xl border border-border/5 shadow-inner"
-          >
-            <Button
-              v-for="statusId in TASK_STATUSES"
-              :key="statusId"
-              size="sm"
-              variant="ghost"
-              class="!h-8 !px-3 !py-0 !rounded-lg !text-[10px] !font-black uppercase flex items-center gap-1.5 transition-all duration-200"
-              :class="
-                task.status === statusId
-                  ? 'bg-white !shadow-sm !text-brand scale-[1.05]'
-                  : '!text-text-muted/40 hover:!text-text-muted'
-              "
-            >
-              <div
-                :class="[
-                  STATUS_MAP[statusId].color,
-                  'h-1.5 w-1.5 rounded-full',
-                ]"
-              />
-              {{ STATUS_MAP[statusId].label.split(" ")[0] }}
-            </Button>
-          </div>
-
           <Button
             variant="secondary"
             size="sm"
@@ -80,6 +63,14 @@ definePageMeta({
             haptic="medium"
           >
             <span class="i-heroicons-pencil-square h-5 w-5" />
+          </Button>
+          <Button
+            variant="danger"
+            size="sm"
+            class="!h-10 !w-10 !p-0 rounded-xl shadow-sm transition-transform active:scale-90"
+            @click.stop="handleDelete"
+          >
+            <span class="i-heroicons-trash h-5 w-5" />
           </Button>
         </div>
       </template>

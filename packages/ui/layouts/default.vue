@@ -25,6 +25,7 @@
       </div>
     </main>
 
+    <DeleteModal />
     <TaskModal />
   </div>
 </template>
