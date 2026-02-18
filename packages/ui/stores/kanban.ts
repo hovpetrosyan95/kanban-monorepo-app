@@ -1,37 +1,66 @@
 import { defineStore } from "pinia";
+import { ref } from "vue";
 import type { Task, CreateTaskInput, TaskStatus } from "../types/kanban";
-import "pinia-plugin-persistedstate";
+import { Haptics, ImpactStyle, NotificationType } from "@capacitor/haptics";
 
 export const useKanbanStore = defineStore(
   "kanban",
   () => {
     const tasks = ref<Task[]>([]);
 
-    // Action to create a task
-    const createTask = (input: CreateTaskInput) => {
-      const newTask: Task = {
-        ...input,
-        id: crypto.randomUUID(), // Generate unique ID
-        createdAt: new Date().toISOString(),
-      };
-      tasks.value.push(newTask);
-    };
-
-    const updateTask = (id: string, updates: Partial<Task>) => {
-      const index = tasks.value.findIndex((t: Task) => t.id === id);
-      if (index !== -1) {
-        tasks.value[index] = { ...tasks.value[index], ...updates };
+    /**
+     * 🛡️ Private Haptic Helper
+     * Wraps native calls in try/catch to prevent the app from
+     * crashing on web browsers or unsupported devices.
+     */
+    const triggerHaptic = async (
+      type: "impact" | "notification",
+      style: ImpactStyle | NotificationType,
+    ) => {
+      try {
+        if (type === "impact") {
+          await Haptics.impact({ style: style as ImpactStyle });
+        } else {
+          await Haptics.notification({ type: style as NotificationType });
+        }
+      } catch (e) {
+        // Silently ignore: Haptics are a "nice-to-have" UI enhancement
+        console.warn("Haptic feedback not available", e);
       }
     };
 
-    const deleteTask = (id: string) => {
-      tasks.value = tasks.value.filter((t: Task) => t.id !== id);
+    const createTask = async (input: CreateTaskInput) => {
+      const newTask: Task = {
+        ...input,
+        id: crypto.randomUUID(),
+        createdAt: new Date().toISOString(),
+      };
+      tasks.value.push(newTask);
+
+      await triggerHaptic("notification", NotificationType.Success);
     };
 
-    const updateStatus = (id: string, newStatus: TaskStatus) => {
+    const updateTask = async (id: string, updates: Partial<Task>) => {
+      const index = tasks.value.findIndex((t: Task) => t.id === id);
+      if (index !== -1) {
+        tasks.value[index] = { ...tasks.value[index], ...updates };
+
+        await triggerHaptic("impact", ImpactStyle.Light);
+      }
+    };
+
+    const deleteTask = async (id: string) => {
+      tasks.value = tasks.value.filter((t: Task) => t.id !== id);
+
+      await triggerHaptic("notification", NotificationType.Warning);
+    };
+
+    const updateStatus = async (id: string, newStatus: TaskStatus) => {
       const task = tasks.value.find((t: Task) => t.id === id);
-      if (task) {
+      if (task && task.status !== newStatus) {
         task.status = newStatus;
+
+        await triggerHaptic("impact", ImpactStyle.Medium);
       }
     };
 
@@ -49,6 +78,8 @@ export const useKanbanStore = defineStore(
     };
   },
   {
-    persist: { storage: import.meta.client ? localStorage : undefined },
+    persist: {
+      storage: import.meta.client ? localStorage : undefined,
+    },
   },
 );
