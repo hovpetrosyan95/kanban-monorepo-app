@@ -18,6 +18,6 @@ const props = defineProps<{
 const { trigger } = useHaptics();
 
 const handleClick = () => {
-  trigger("light");
+  trigger("impact", "light");
 };
 </script>

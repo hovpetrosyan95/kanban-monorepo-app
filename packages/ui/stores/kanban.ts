@@ -1,33 +1,13 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import type { Task, CreateTaskInput, TaskStatus } from "../types/kanban";
-import { Haptics, ImpactStyle, NotificationType } from "@capacitor/haptics";
+import { useHaptics } from "../composables/useHaptics";
 
 export const useKanbanStore = defineStore(
   "kanban",
   () => {
     const tasks = ref<Task[]>([]);
-
-    /**
-     * 🛡️ Private Haptic Helper
-     * Wraps native calls in try/catch to prevent the app from
-     * crashing on web browsers or unsupported devices.
-     */
-    const triggerHaptic = async (
-      type: "impact" | "notification",
-      style: ImpactStyle | NotificationType,
-    ) => {
-      try {
-        if (type === "impact") {
-          await Haptics.impact({ style: style as ImpactStyle });
-        } else {
-          await Haptics.notification({ type: style as NotificationType });
-        }
-      } catch (e) {
-        // Silently ignore: Haptics are a "nice-to-have" UI enhancement
-        console.warn("Haptic feedback not available", e);
-      }
-    };
+    const { trigger, success, warning } = useHaptics();
 
     const createTask = async (input: CreateTaskInput) => {
       const newTask: Task = {
@@ -37,7 +17,7 @@ export const useKanbanStore = defineStore(
       };
       tasks.value.push(newTask);
 
-      await triggerHaptic("notification", NotificationType.Success);
+      await success();
     };
 
     const updateTask = async (id: string, updates: Partial<Task>) => {
@@ -45,14 +25,14 @@ export const useKanbanStore = defineStore(
       if (index !== -1) {
         tasks.value[index] = { ...tasks.value[index], ...updates };
 
-        await triggerHaptic("impact", ImpactStyle.Light);
+        await trigger("impact", "light");
       }
     };
 
     const deleteTask = async (id: string) => {
       tasks.value = tasks.value.filter((t: Task) => t.id !== id);
 
-      await triggerHaptic("notification", NotificationType.Warning);
+      await warning();
     };
 
     const updateStatus = async (id: string, newStatus: TaskStatus) => {
@@ -60,7 +40,7 @@ export const useKanbanStore = defineStore(
       if (task && task.status !== newStatus) {
         task.status = newStatus;
 
-        await triggerHaptic("impact", ImpactStyle.Medium);
+        await trigger("impact", "medium");
       }
     };
 

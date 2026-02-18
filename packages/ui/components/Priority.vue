@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { TaskPriority } from "../types/kanban";
+import { type TaskPriority } from "../types/kanban";
 
 const props = defineProps<{
   value: TaskPriority;

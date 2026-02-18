@@ -17,7 +17,7 @@ const { trigger } = useHaptics();
 
 const handleClick = (event: MouseEvent) => {
   if (props.haptic) {
-    trigger(props.haptic);
+    trigger("impact", props.haptic);
   }
   emit("click", event);
 };

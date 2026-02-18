@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import type { Task } from "../types/kanban";
+
+const props = defineProps<{ task: Task }>();
+
+const { execute } = useTaskActions(props.task);
+const { isOpen, coords, toggle, close } = useDropdown();
+</script>
+
 <template>
   <div class="relative">
     <Button
@@ -49,13 +58,3 @@
     </Teleport>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { Task } from "../types/kanban";
-
-const props = defineProps<{ task: Task }>();
-
-// Decoupled Logic
-const { execute } = useTaskActions(props.task);
-const { isOpen, coords, toggle, close } = useDropdown();
-</script>
