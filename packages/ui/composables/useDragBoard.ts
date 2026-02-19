@@ -1,5 +1,6 @@
 import { count } from "node:console";
 import type { Task, TaskStatus } from "../types/kanban";
+import { TASK_STATUSES } from "../constants/task";
 
 export const useDragBoard = () => {
   const kanbanStore = useKanbanStore();

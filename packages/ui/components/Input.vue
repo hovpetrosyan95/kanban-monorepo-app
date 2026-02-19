@@ -1,18 +1,3 @@
-<script setup lang="ts">
-withDefaults(
-  defineProps<{
-    modelValue?: string | number;
-    as?: "input" | "textarea";
-  }>(),
-  {
-    modelValue: "",
-    as: "input",
-  },
-);
-
-defineEmits(["update:modelValue"]);
-</script>
-
 <template>
   <div class="flex flex-col gap-1.5 w-full">
     <component
@@ -26,3 +11,18 @@ defineEmits(["update:modelValue"]);
     />
   </div>
 </template>
+
+<script setup lang="ts">
+withDefaults(
+  defineProps<{
+    modelValue?: string | number;
+    as?: "input" | "textarea";
+  }>(),
+  {
+    modelValue: "",
+    as: "input", // Default to standard input
+  },
+);
+
+defineEmits(["update:modelValue"]);
+</script>

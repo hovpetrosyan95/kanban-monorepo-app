@@ -1,8 +1,3 @@
-<script setup lang="ts">
-const { isOpen, taskTitle, closeDeleteConfirm, handleConfirmDelete } =
-  useDeleteConfirm();
-</script>
-
 <template>
   <Teleport to="body">
     <Transition
@@ -65,3 +60,10 @@ const { isOpen, taskTitle, closeDeleteConfirm, handleConfirmDelete } =
     </Transition>
   </Teleport>
 </template>
+
+<script setup lang="ts">
+import { useDeleteConfirm } from "../composables/useDeleteConfirm";
+
+const { isOpen, taskTitle, closeDeleteConfirm, handleConfirmDelete } =
+  useDeleteConfirm();
+</script>
