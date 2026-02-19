@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import draggable from "vuedraggable";
 import type { TaskStatus, Task } from "../types/kanban";
-import { useDragBoard } from "../composables/useDragBoard";
 
 const { status, list } = defineProps<{
   status: TaskStatus;

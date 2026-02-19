@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import type { Task, CreateTaskInput, TaskStatus } from "../types/kanban";
-import { useHaptics } from "../composables/useHaptics";
 
 export const useKanbanStore = defineStore(
   "kanban",

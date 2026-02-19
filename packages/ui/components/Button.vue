@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useHaptics } from "../composables/useHaptics";
 import type { HapticStrength } from "../types/ui";
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";

@@ -1,4 +1,3 @@
-import { TASK_STATUSES, TASK_PRIORITIES } from "../constants/task";
 import type { CreateTaskInput } from "../types/kanban";
 
 const createInitialState = (): CreateTaskInput => ({

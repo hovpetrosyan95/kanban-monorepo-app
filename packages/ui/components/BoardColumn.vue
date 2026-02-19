@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { STATUS_MAP } from "../constants/task";
 import type { TaskStatus } from "../types/kanban";
 
 defineProps<{

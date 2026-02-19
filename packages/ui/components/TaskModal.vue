@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { STATUS_MAP, TASK_PRIORITIES, TASK_STATUSES } from "../constants/task";
 import { TASK_MODAL_CONTENT } from "../constants/ui";
 
 const { isOpen, form, close, editingId } = useTaskModal();

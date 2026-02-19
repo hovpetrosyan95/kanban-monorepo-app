@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import AddCardSection from "../../components/AddCardSection.vue";
-import { TASK_STATUSES } from "../../constants/task";
 definePageMeta({ title: "Board" });
 const { open } = useTaskModal();
 
